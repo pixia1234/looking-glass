@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Looking Glass Console</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <div class="hero-top">
+          <span class="badge">Optics Lab</span>
+          <span class="timestamp" id="clock">--:--:--</span>
+        </div>
+        <h1>Looking Glass</h1>
+        <p class="subtitle">
+          A calibrated window into mirror-state telemetry, observation logs, and
+          the latest refraction pulses.
+        </p>
+      </header>
+
+      <main class="grid">
+        <section class="panel status">
+          <h2>System Status</h2>
+          <div class="status-grid">
+            <div>
+              <span class="label">Service</span>
+              <span id="status-service" class="value">--</span>
+            </div>
+            <div>
+              <span class="label">State</span>
+              <span id="status-state" class="value">--</span>
+            </div>
+            <div>
+              <span class="label">Uptime</span>
+              <span id="status-uptime" class="value">--</span>
+            </div>
+            <div>
+              <span class="label">Time</span>
+              <span id="status-time" class="value">--</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel nodes">
+          <div class="panel-header">
+            <h2>Connected Nodes</h2>
+            <button id="refresh-agents" class="ghost">Refresh</button>
+          </div>
+          <div id="agent-list" class="agent-list">
+            <div class="empty">Loading nodes...</div>
+          </div>
+        </section>
+
+        <section class="panel observations">
+          <div class="panel-header">
+            <h2>Observations</h2>
+            <button id="refresh" class="ghost">Refresh</button>
+          </div>
+          <div id="observation-list" class="observation-list">
+            <div class="empty">Loading observations...</div>
+          </div>
+        </section>
+
+        <section class="panel diagnostics">
+          <h2>Network Diagnostics</h2>
+          <form id="diagnostic-form" class="diagnostic-form">
+            <label>
+              <span class="label">Type</span>
+              <select id="diagnostic-type" name="type">
+                <option value="ping">Ping</option>
+                <option value="mtr">MTR</option>
+                <option value="nexttrace">NextTrace</option>
+                <option value="iperf3">iPerf3</option>
+              </select>
+            </label>
+            <label>
+              <span class="label">Target</span>
+              <input
+                id="diagnostic-target"
+                name="target"
+                placeholder="example.com or 1.1.1.1"
+                required
+              />
+            </label>
+            <label>
+              <span class="label">Count</span>
+              <input
+                id="diagnostic-count"
+                name="count"
+                type="number"
+                min="1"
+                max="10"
+                value="4"
+              />
+            </label>
+            <div id="iperf3-fields" class="optional-fields">
+              <label>
+                <span class="label">Port (iPerf3)</span>
+                <input
+                  id="diagnostic-port"
+                  name="port"
+                  type="number"
+                  min="1"
+                  max="65535"
+                  value="5201"
+                />
+              </label>
+              <label>
+                <span class="label">Duration (iPerf3)</span>
+                <input
+                  id="diagnostic-duration"
+                  name="duration"
+                  type="number"
+                  min="1"
+                  max="60"
+                  value="10"
+                />
+              </label>
+              <label>
+                <span class="label">Protocol (iPerf3)</span>
+                <select id="diagnostic-protocol" name="protocol">
+                  <option value="tcp">TCP</option>
+                  <option value="udp">UDP</option>
+                </select>
+              </label>
+            </div>
+            <button type="submit">Run</button>
+          </form>
+          <div id="diagnostic-error" class="error"></div>
+          <pre id="diagnostic-output" class="diagnostic-output">Awaiting command...</pre>
+        </section>
+
+        <section class="panel compose">
+          <h2>Record New Observation</h2>
+          <form id="compose-form" class="compose-form">
+            <textarea
+              id="compose-text"
+              name="text"
+              rows="4"
+              maxlength="280"
+              placeholder="Log a reflection, anomaly, or calibration note..."
+              required
+            ></textarea>
+            <div class="compose-footer">
+              <span id="compose-count">0 / 280</span>
+              <button type="submit">Record</button>
+            </div>
+          </form>
+          <div id="compose-error" class="error"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>Signal integrity: 99.2%</span>
+        <span>Beam alignment: nominal</span>
+        <span>Phase drift: 0.08%</span>
+      </footer>
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

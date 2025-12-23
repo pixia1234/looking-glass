@@ -1,0 +1,22 @@
+.DS_Store
+.env
+.env.*
+*.log
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Builds
+dist/
+build/
+coverage/
+
+# Runtime artifacts
+backend/looking-glass.log
+
+# Docker
+*.tar

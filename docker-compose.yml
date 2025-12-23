@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  looking-glass-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    ports:
+      - "3001:3001"
+    environment:
+      ADMIN_PASSWORD: "pixia1234"
+
+  looking-glass-panel:
+    build:
+      context: .
+      dockerfile: Dockerfile.panel
+    ports:
+      - "8080:80"
+    environment:
+      LG_API_BASE: "http://looking-glass-backend:3001"

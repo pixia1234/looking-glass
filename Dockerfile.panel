@@ -1,0 +1,12 @@
+FROM nginx:1.27-alpine
+
+WORKDIR /usr/share/nginx/html
+
+COPY frontend ./
+COPY docker/panel-entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /entrypoint.sh
+
+EXPOSE 80
+
+ENTRYPOINT ["/entrypoint.sh"]

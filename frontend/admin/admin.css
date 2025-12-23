@@ -1,0 +1,135 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap");
+
+:root {
+  color-scheme: light;
+  --bg: #0b0f1a;
+  --panel: rgba(255, 255, 255, 0.08);
+  --ink: #f7f7f2;
+  --muted: rgba(247, 247, 242, 0.7);
+  --accent: #f6b73c;
+  --accent-2: #65d6c4;
+  --danger: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at top right, #23325c 0%, var(--bg) 50%);
+  min-height: 100vh;
+}
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 24px 32px;
+}
+
+.hero {
+  background: rgba(17, 26, 44, 0.85);
+  padding: 24px 28px;
+  border-radius: 22px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+}
+
+.panel {
+  background: var(--panel);
+  border-radius: 20px;
+  padding: 20px 22px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.panel-subtext {
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1;
+  min-width: 220px;
+  height: 42px;
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: rgba(10, 15, 27, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+}
+
+button {
+  border: none;
+  background: var(--accent-2);
+  color: #09221e;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.agent-list {
+  display: grid;
+  gap: 12px;
+}
+
+.agent-card {
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.agent-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.token {
+  word-break: break-all;
+  font-family: "Space Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+
+.error {
+  min-height: 20px;
+  color: var(--danger);
+  margin-top: 8px;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  form {
+    flex-direction: column;
+  }
+}

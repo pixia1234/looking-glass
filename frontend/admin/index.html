@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Looking Glass Admin</title>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="hero">
+        <h1>Looking Glass Admin</h1>
+        <p>Manage connected backend nodes and tokens.</p>
+      </header>
+
+      <section class="panel login" id="login-panel">
+        <h2>Admin Login</h2>
+        <form id="login-form">
+          <input
+            id="admin-password"
+            type="password"
+            placeholder="Admin password"
+            required
+          />
+          <button type="submit">Unlock</button>
+        </form>
+        <div id="login-error" class="error"></div>
+      </section>
+
+      <section class="panel hidden" id="admin-panel">
+        <div class="panel-header">
+          <h2>Agents</h2>
+          <button id="refresh">Refresh</button>
+        </div>
+        <div class="panel-subtext" id="panel-url"></div>
+
+        <form id="create-form" class="inline-form">
+          <input
+            id="create-name"
+            type="text"
+            placeholder="New agent name"
+            required
+          />
+          <button type="submit">Create</button>
+        </form>
+        <div id="create-error" class="error"></div>
+
+        <div id="agent-list" class="agent-list"></div>
+      </section>
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
